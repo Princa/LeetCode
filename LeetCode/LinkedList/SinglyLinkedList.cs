@@ -174,6 +174,56 @@ namespace LeetCode.LinkedList
             return result;
         }
 
+        public object GetMiddleMethod1()
+        {
+            //Method 1 - two pointers, one slow one fast, when fast reach end, slow is middle
+            SinglyLinkedListNode slow = root;
+            SinglyLinkedListNode fast = root;
+            while (fast != null && fast.Next != null)
+            {
+                slow = slow.Next;
+                fast = fast.Next.Next;
+            }
+            if (slow != null)
+                return slow.Data;
+            else
+                return null;
+        }
+
+        public object GetMiddleMethod2()
+        {
+            //Method 2 - mid = head, when it's odd number, count ++ until end, mid is middle
+            SinglyLinkedListNode mid = root;
+            SinglyLinkedListNode head = root;
+            int count = 0;
+            while (head != null)
+            {
+                if ((count % 2) != 0) //% reminder, / divide
+                {
+                    mid = mid.Next;
+                }
+                count++;
+                head = head.Next;
+            }
+            if (mid != null)
+                return mid.Data;
+            else
+                return null;
+        }
+
+        public Boolean IsPalindrome()
+        {
+            //Method 1 - insert first half to stack, then from the 2nd half compare with stack. all match = true 
+            // require O(n) and extra space.
+            //Method 2 - take 2nd half and reverse, match with 1st half. all match = true.
+            // require O(n) and constant space O(1)
+            //Method 3 - recursive loop the 
+
+            Boolean result = false;
+
+            return result;
+        }
+
         #endregion
 
         //LinkedListNode class
