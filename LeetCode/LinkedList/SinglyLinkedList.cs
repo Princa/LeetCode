@@ -211,17 +211,127 @@ namespace LeetCode.LinkedList
                 return null;
         }
 
-        public Boolean IsPalindrome()
+        //public Boolean IsPalindrome()
+        //{
+        //    //Method 1 - insert first half to stack, then from the 2nd half compare with stack. all match = true 
+        //    // require O(n) and extra space.
+        //    //Method 2 - take 2nd half and reverse, match with 1st half. all match = true.
+        //    // require O(n) and constant space O(1)
+        //    //Method 3 - recursive loop  -- NEED MORE THINKING
+
+
+        //    Boolean result = false;
+
+        //    return result;
+        //}
+
+        public Boolean IsIntersected(SinglyLinkedList A, SinglyLinkedList B)
         {
-            //Method 1 - insert first half to stack, then from the 2nd half compare with stack. all match = true 
-            // require O(n) and extra space.
-            //Method 2 - take 2nd half and reverse, match with 1st half. all match = true.
-            // require O(n) and constant space O(1)
-            //Method 3 - recursive loop the 
+            //if intersected then at least the last node from each LinkedList should be the same
+            return (A.last == B.last);
+        }
 
-            Boolean result = false;
+        public object FindIntersectedNode(SinglyLinkedList A, SinglyLinkedList B)
+        {
+            //Count difference of two lists, traverce larger one until d
+            //return true if compare return match
+            var d = A.count - B.count;
+            var count = 0;
+            var headA = A.Head;
+            var headB = B.Head;
+            if (d > 0)
+            {
+                while (count < Math.Abs(d))
+                {
+                    headA = headA.Next;
+                    count++;
+                }
+            }
+            else
+            {
+                while (count < Math.Abs(d))
+                {
+                    headB = headB.Next;
+                    count++;
+                }
+            }
 
-            return result;
+            while (headA != null || headB != null)
+            {
+                if (headA.Data == headB.Data)
+                {
+                    return headA.Data;
+                }
+                headA = headA.Next;
+                headB = headB.Next;
+            }
+            return null;
+        }
+
+        public object FindIntersectedNodeWOCompare(SinglyLinkedList A, SinglyLinkedList B)
+        {
+            //No comparison needed
+            //x is lengh of unintersected A nodes
+            //y is lengh of unintersected B nodes
+            //z is lengh of intersected nodes
+            //x+z = A, y+z=B
+            //Reverse A, traverse B, x+y = newB
+            //x = (A+newB-B)/2, y = (B+newB-A)/2, z=(A+B-newB)/2
+            var c1 = A.count;
+            var c2 = B.count;
+            //Reverse A
+            A.IterativeReverse();
+            var c3 = 0;
+            var headB = B.Head;
+            while (headB.Next != null)
+            {
+                headB = headB.Next;
+                c3++;
+            }
+            var x = (c1 + c3 - c2) / 2;
+            var y = (c2 + c3 - c1) / 2;
+            var z = (c1 + c2 - c3) / 2;
+            var count = 0;
+            A.IterativeReverse();
+            var result = A.Head;
+            while (count <= x)
+            {
+                count++;
+                result = result.Next;
+            }
+            return result.Data;
+        }
+
+        public void ReverseAlternateNodeAppendAtLast()
+        {
+            //Reverse alternate node and append at last Space O(1) Time O(n)
+            //use odd and even, put even to the front to have reverse sequence
+            SinglyLinkedListNode odd = this.root;
+            var even = odd.Next;
+            odd.Next = odd.Next.Next;
+            odd = odd.Next;
+            even.Next = null;
+
+            //loop if more nodes
+            while (odd != null && odd.Next != null)
+            {
+                var temp = odd.Next.Next;
+                odd.Next.Next = even; //make next even to be head of even list
+                even = odd.Next; //create even list
+                odd.Next = temp; //link next odd to odd list
+                if (temp != null) //if next odd node is not null, move pointer to next odd
+                    odd = temp;
+            }
+            odd.Next = even;
+        }
+
+        public void PrintReverseRecursive(SinglyLinkedListNode head)
+        {
+            //recursively print the linked list
+            if (head == null)
+                return;
+            PrintReverseRecursive(head.Next);
+            Console.Write(head.Data + ",");
         }
 
         #endregion
