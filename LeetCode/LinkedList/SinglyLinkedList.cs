@@ -334,6 +334,44 @@ namespace LeetCode.LinkedList
             Console.Write(head.Data + ",");
         }
 
+        public void PairwiseSwapIterative()
+        {
+            if (this.root == null || this.root.Next == null)
+                return; //check if the linkedlist has more than 2 nodes to swap;
+
+            SinglyLinkedListNode prev = this.root; //1
+            var current = this.root.Next; //2
+            this.root = current; //2
+
+            while (true)
+            {
+                var next = current.Next; //3
+                current.Next = prev; //2->1
+
+                if (next == null || next.Next == null)
+                {
+                    prev.Next = next;
+                    break;
+                }
+
+                prev.Next = next.Next; //1->4
+                //set prev and current
+                prev = next; //3
+                current = prev.Next; //4              
+            }
+        }
+
+        public SinglyLinkedListNode PairwiseSwapRecursive(SinglyLinkedListNode head)
+        {
+            //pass sublist head and return new head to keep swaping the pair
+            if (this.root == null || this.root.Next == null)
+                return this.root;
+
+            
+
+            return this.root;
+        }
+
         #endregion
 
         //LinkedListNode class
