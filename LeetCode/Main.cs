@@ -47,20 +47,56 @@ namespace LeetCode
             //MergeSort.DoMergeSort(TestArr, 0, TestArr.Length - 1);
             //PrintArray(TestArr);           
 
-            BinarySearchTree<int> bst = new BinarySearchTree<int>();
-            bst.Add(50);
-            bst.Add(20);
-            bst.Add(10);
-            bst.Add(40);
-            bst.Add(89);
-            bst.Add(51);
-            bst.Add(100);
+            //BinarySearchTree<int> bst = new BinarySearchTree<int>();
+            //bst.Add(50);
+            //bst.Add(20);
+            //bst.Add(10);
+            //bst.Add(40);
+            //bst.Add(89);
+            //bst.Add(51);
+            //bst.Add(100);
 
-            bst.PreorderTraversal(bst.Root);
-            bst.InOrderTraversal(bst.Root);            
-            bst.PostorderTraversal(bst.Root);
+            //bst.PreorderTraversal(bst.Root);
+            //bst.InOrderTraversal(bst.Root);            
+            //bst.PostorderTraversal(bst.Root);
 
+            //int[] array = { 12, 11, 13, 8, 5, 7, 1 };
+            int[] array = { 2, 6, 3, 12, 56, 8 };
+            //int[] result = LeetCode.SearchSorting.HeapSort.DoHeapSort(array, array.Length);
+            //int[] result = LeetCode.SearchSorting.SortKArray.SortK(array, array.Length, 3);
+            //int[] result = LeetCode.SearchSorting.QuickSort.DoQuickSort(array, 0, array.Length - 1);
+            //int[] result = LeetCode.SearchSorting.InsertionSort.DoInsertionSort(array);
+            int[] result = LeetCode.SearchSorting.ShellSort.DoShellSort(array);
+            //PrintArray(result);
 
+            LinkedList.SinglyLinkedList newsll = new LinkedList.SinglyLinkedList();
+            newsll.Add(1);
+            newsll.Add(2);
+            newsll.Add(3);
+            newsll.Add(4);
+            newsll.Add(5);
+            newsll.Add(6);
+            newsll.Add(7);
+            newsll.Add(8);
+
+            //newsll.ListAll();
+            //newsll.delete(4);
+            //newsll.delete(1);
+            
+            //newsll.IterativeReverse();
+            //newsll.RecursiveReverse(newsll.root);
+            //newsll.root.Next.Next.Next = newsll.root;
+            //var isCycled = newsll.IsCycled();
+            //Console.Write(isCycled.ToString());  
+            //var mid1 = newsll.GetMiddleMethod1();
+            //var mid2 = newsll.GetMiddleMethod2();
+            //Console.Write(mid1 + "," + mid2);
+
+            //newsll.ReverseAlternateNodeAppendAtLast();
+            //newsll.PairwiseSwapIterative();
+            newsll.PairwiseSwapRecursive(newsll.root);
+            newsll.ListAll();
+            //newsll.PrintReverseRecursive(newsll.root);
             Console.ReadLine();
         }
 
