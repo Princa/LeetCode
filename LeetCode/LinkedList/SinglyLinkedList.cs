@@ -364,12 +364,16 @@ namespace LeetCode.LinkedList
         public SinglyLinkedListNode PairwiseSwapRecursive(SinglyLinkedListNode head)
         {
             //pass sublist head and return new head to keep swaping the pair
-            if (this.root == null || this.root.Next == null)
-                return this.root;
+            if (head == null || head.Next == null)
+                return head;
 
-            
+            SinglyLinkedListNode rest = head.Next.Next;
 
-            return this.root;
+            SinglyLinkedListNode newHead = head.Next;
+            //reverse link
+            head.Next.Next = head;
+            head.Next = PairwiseSwapRecursive(rest);
+            return newHead;
         }
 
         #endregion
