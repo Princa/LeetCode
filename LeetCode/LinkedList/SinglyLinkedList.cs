@@ -363,6 +363,8 @@ namespace LeetCode.LinkedList
 
         public SinglyLinkedListNode PairwiseSwapRecursive(SinglyLinkedListNode head)
         {
+			//Returns the new head of LinkedList, needs to pass head to printall
+
             //pass sublist head and return new head to keep swaping the pair
             if (head == null || head.Next == null)
                 return head;
