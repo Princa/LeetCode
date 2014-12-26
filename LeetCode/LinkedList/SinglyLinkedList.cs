@@ -420,6 +420,7 @@ namespace LeetCode.LinkedList
 			}
 
 			return result;
+
 		}
 
 		#endregion
