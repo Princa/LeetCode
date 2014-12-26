@@ -362,11 +362,65 @@ namespace LeetCode.LinkedList
 				return SortedIntersectionTwoLinkedList (s1.Next, s2);
 			if ((int)(s1.Data) > (int)(s2.Data))
 				return SortedIntersectionTwoLinkedList (s1, s2.Next);
-			var temp = new SinglyLinkedListNode (s1.Data, SortedIntersectionTwoLinkedList(s1.Next,s2.Next));
+			var temp = new SinglyLinkedListNode (s1.Data, SortedIntersectionTwoLinkedList (s1.Next, s2.Next));
 
 			return temp;
 		}
 
+		public void DeleteAltIterative ()
+		{
+			if (this.Head == null)
+				return;
+			SinglyLinkedListNode prev = Head;
+			SinglyLinkedListNode current = Head.Next;
+
+			while (current != null && prev != null) {
+				prev.Next = current.Next;
+
+				prev = current.Next;
+				if (current.Next != null)
+					current = current.Next.Next;
+			}
+		}
+
+		public void DeleteAltRecursive (SinglyLinkedListNode node)
+		{
+			if (node == null)
+				return;
+			SinglyLinkedListNode current = node.Next;
+
+			if (current != null) {
+				node.Next = current.Next;
+			}
+
+			DeleteAltRecursive (node.Next);
+		}
+
+		public SinglyLinkedListNode SortedMergeRecursive (SinglyLinkedListNode s1, SinglyLinkedListNode s2)
+		{
+			SinglyLinkedListNode result = new SinglyLinkedListNode ();
+
+			if (s1 == null && s2 != null) {
+				result.Data = s2.Data;
+				result.Next = SortedMergeRecursive (s1, s2.Next);
+			}
+			if (s2 == null && s1 != null) {
+				result.Data = s1.Data;
+				result.Next = SortedMergeRecursive (s1.Next, s2);
+			}
+
+			if (s1 != null && s2 != null) {
+				if ((int)(s1.Data) <= (int)(s2.Data)) {
+					result.Data = s1.Data;
+					result.Next = SortedMergeRecursive (s1.Next, s2);
+				} else {
+					result.Data = s2.Data;
+					result.Next = SortedMergeRecursive (s1, s2.Next);
+				}
+			}
+
+			return result;
+		}
 
 		#endregion
 
@@ -375,6 +429,12 @@ namespace LeetCode.LinkedList
 		{
 			private object data;
 			private SinglyLinkedListNode next;
+
+			public SinglyLinkedListNode ()
+			{
+				this.data = null;
+				this.next = null;
+			}
 
 			public SinglyLinkedListNode (object data)
 			{
