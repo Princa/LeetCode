@@ -418,47 +418,47 @@ namespace LeetCode.LinkedList
 					result.Next = SortedMergeRecursive (s1, s2.Next);
 				}
 			}
-
 			return result;
-
 		}
 
 		#endregion
 
 		//LinkedListNode class
-		public class SinglyLinkedListNode
-		{
-			private object data;
-			private SinglyLinkedListNode next;
-
-			public SinglyLinkedListNode ()
-			{
-				this.data = null;
-				this.next = null;
-			}
-
-			public SinglyLinkedListNode (object data)
-			{
-				this.Data = data;
-				this.Next = null;
-			}
-
-			public SinglyLinkedListNode (object data, SinglyLinkedListNode next)
-			{
-				this.Data = data;
-				this.Next = next;
-			}
-
-			public SinglyLinkedListNode Next {
-				get { return next; }
-				set { this.next = value; }
-			}
-
-			public object Data {
-				get { return this.data; }
-				set { this.data = value; }
-			}
-		}
 
 	}
+
+	public class SinglyLinkedListNode
+	{
+		private object data;
+		private SinglyLinkedListNode next;
+
+		public SinglyLinkedListNode ()
+		{
+			this.data = null;
+			this.next = null;
+		}
+
+		public SinglyLinkedListNode (object data)
+		{
+			this.Data = data;
+			this.Next = null;
+		}
+
+		public SinglyLinkedListNode (object data, SinglyLinkedListNode next)
+		{
+			this.Data = data;
+			this.Next = next;
+		}
+
+		public SinglyLinkedListNode Next {
+			get { return next; }
+			set { this.next = value; }
+		}
+
+		public object Data {
+			get { return this.data; }
+			set { this.data = value; }
+		}
+	}
+
 }
