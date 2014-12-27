@@ -58,6 +58,7 @@
     <Compile Include="SearchSorting\QuickSort.cs" />
     <Compile Include="SearchSorting\ShellSort.cs" />
     <Compile Include="SearchSorting\SortKArray.cs" />
+    <Compile Include="LinkedList\MergeSortSinglyLinkedList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
