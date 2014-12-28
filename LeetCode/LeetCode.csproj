@@ -59,6 +59,7 @@
     <Compile Include="SearchSorting\ShellSort.cs" />
     <Compile Include="SearchSorting\SortKArray.cs" />
     <Compile Include="LinkedList\MergeSortSinglyLinkedList.cs" />
+    <Compile Include="OJ\SwapPairs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -68,4 +69,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="OJ\" />
+  </ItemGroup>
 </Project>
